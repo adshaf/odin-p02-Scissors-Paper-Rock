@@ -1,8 +1,7 @@
 function getComputerChoice() {
     const items = ["rock", "paper", "scissors"]
-    let select_idx = Math.round(Math.random() * ( 3 - 1 ) + 1 )
+    let select_idx = Math.round(Math.random() * ( 2 - 0 ) + 0 )
     let selection = items[select_idx]
-
     return selection
 }
 
@@ -14,7 +13,7 @@ function getPlayerSelection() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection && computerSelection ) {
+    if (playerSelection == computerSelection) {
         return ("Draw!")
     } else if ((playerSelection == "rock" && computerSelection == "paper") 
             || (playerSelection == "paper" && computerSelection == "scissors") 
@@ -30,13 +29,18 @@ function playRound(playerSelection, computerSelection) {
 function playGame() {
     let player_points = 0
     let computer_points = 0
-
-    for (i = 0; i <5; i++) {
-        let res = (playRound(getPlayerSelection(), getComputerChoice()))
+    
+    for (i = 0; i < 5; i++) {
+        let p_select = getPlayerSelection()
+        let comp_select = getComputerChoice()
+        let res = (playRound(p_select, comp_select))
+        
+        console.log(p_select + " vs " + comp_select)
         console.log(res)
+        
         if (res == "You win!") {
             player_points++
-        } else if (res = "You Lost! Sucks to suck!") {
+        } else if (res == "You Lost! Sucks to suck!") {
             computer_points++
         }
     }
